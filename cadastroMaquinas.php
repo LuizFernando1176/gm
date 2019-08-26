@@ -12,7 +12,7 @@ $querySetor = mysqli_query($coon, $query02);
 <div class="container">
 
 
-    <form style="margin: 4% ; padding: 1.5%;margin-top: 14%;" method="post" action="inserts/insert_maquinas.php">
+    <form style="margin: 4% ; padding: 1.5%;margin-top: 10%;" method="post" action="inserts/insert_maquinas.php">
         <center><h3 class="descEstilo">Cadastro de Máquina</h3></center><br><br>
         <div class="form-row">
             <div class="form-group col-md-6">

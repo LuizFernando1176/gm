@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Ago-2019 às 06:05
--- Versão do servidor: 10.3.15-MariaDB
--- versão do PHP: 7.1.30
+-- Tempo de geração: 26-Ago-2019 às 20:25
+-- Versão do servidor: 10.3.16-MariaDB
+-- versão do PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,7 +45,12 @@ CREATE TABLE `maquina` (
 INSERT INTO `maquina` (`id`, `id_setor`, `id_rack`, `nome_maquina`, `nome_usuario`, `ponto`, `mac`) VALUES
 (2, 3, 1, 'CAVAL0100-PC', 'jose.walkirdes ', 'PP05PT15', 'D8:97:BA:E5:54:32'),
 (48, 3, 1, 'CAVAL-PC-NOVO', 'salmo.domingos ', 'PP01PT09', 'C0:7C:D1:33:83:D8'),
-(49, 3, 2, 'CAVAL02-PC', 'francisco.assis ', 'PP05PT09', '70:71:BC:58:13:9A');
+(49, 3, 2, 'CAVAL02-PC', 'francisco.assis ', 'PP05PT09', '70:71:BC:58:13:9A'),
+(50, 26, 4, 'DEf-01', 'thiago.silva', 'PP01PT02', '55:aa:22:55:25:55'),
+(51, 7, 2, 'Veia01', 'veia.veia', 'PP01PT02', '50:AF:22:22:A0:00'),
+(52, 7, 2, 'Demo001', 'democrito.rodrigo', 'PP01PT03', '00:AF:SS:33:00:GG'),
+(53, 12, 4, 'Demo002', 'Amiguinho', 'PP01PT06', 'll:ll:l0:0s:00:s0'),
+(54, 5, 5, 'Veia03', 'Veia', 'PP01PT5', '12:12:12:PP:12:12');
 
 -- --------------------------------------------------------
 
@@ -126,6 +131,26 @@ INSERT INTO `setor` (`id`, `setor`) VALUES
 (34, 'DAP Ger.'),
 (35, 'DAT');
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `login` varchar(40) NOT NULL,
+  `senha` varchar(40) NOT NULL,
+  `nivel` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `login`, `senha`, `nivel`) VALUES
+(1, 'luiz.ferreira', 'nando1176', 1);
+
 --
 -- Índices para tabelas despejadas
 --
@@ -134,7 +159,9 @@ INSERT INTO `setor` (`id`, `setor`) VALUES
 -- Índices para tabela `maquina`
 --
 ALTER TABLE `maquina`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `maquina_ibfk_1` (`id_setor`),
+  ADD KEY `maquina_ibfk_2` (`id_rack`);
 
 --
 -- Índices para tabela `rack`
@@ -149,6 +176,12 @@ ALTER TABLE `setor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
@@ -156,7 +189,7 @@ ALTER TABLE `setor`
 -- AUTO_INCREMENT de tabela `maquina`
 --
 ALTER TABLE `maquina`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de tabela `rack`
@@ -169,6 +202,12 @@ ALTER TABLE `rack`
 --
 ALTER TABLE `setor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas

@@ -3,7 +3,7 @@ include_once './config.php';
 include_once './util/cabeca.php';
 include_once './util/conecaoBD.php';
 $coon = mysqli_connect("localhost", "root", "", "bd_pc");
-$query01 = "SELECT `id`, `id_setor`, `id_rack`, `nome_maquina`, `nome_usuario`, `ponto`, `mac` FROM `maquina` WHERE id =id ";
+$query01 = "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac  from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id ";
 $queryRack = mysqli_query($coon, $query01);
 
 
@@ -11,7 +11,7 @@ $queryRack = mysqli_query($coon, $query01);
 
 <div class="container">
 
-          <div class="table-responsive" style="margin-top: 14%;">
+          <div class="table-responsive" style="margin-top: 10%;">
         <div class="container">
    <div class="container-fluid">
           <div class="table-responsive">
@@ -30,8 +30,8 @@ $queryRack = mysqli_query($coon, $query01);
             echo "<td >" . $queryRacks['nome_usuario'] . "</td>";
             echo "<td >" . $queryRacks['ponto'] . "</td>";
             echo "<td >" . $queryRacks['mac'] . "</td>";
-            echo "<td >" . $queryRacks['id_rack'] . "</td>";
-            echo "<td >" . utf8_encode($queryRacks['id_setor']) . "</td>";
+            echo "<td >" . $queryRacks['rack'] . "</td>";
+            echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
             echo "<td >" .  "<button class='btn btn-warning'>Editar</button>". "</td>";
             echo "<td >" . "<button class='btn btn-danger'>Apagar</button>" . "</td>";
             echo "</tr>";
