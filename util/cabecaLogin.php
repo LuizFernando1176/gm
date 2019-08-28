@@ -8,7 +8,7 @@
         <title>Sistema de Gerenciamento de Rede</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
         <link rel="stylesheet" href="<?php urlSite(); ?>css/bootstrap.css">
         <link rel="stylesheet" href="<?php urlSite(); ?>css/estilo.css">
 

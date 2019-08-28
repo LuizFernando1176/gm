@@ -1,6 +1,11 @@
 <?php
+// Inicializa a sessão.
+// Se estiver sendo usado session_name("something"), não esqueça de usá-lo agora!
 session_start();
-unset($_SESSION["id"]);
-unset($_SESSION["name"]);
-header("Location:login.php");
+session_destroy();
+unset( $_SESSION );
+echo' <SCRIPT Language="javascript">
+alert("Usuário desconectado !!");
+location.href="./login.php";
+</SCRIPT>';
 ?>

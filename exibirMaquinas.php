@@ -3,8 +3,9 @@ include_once './config.php';
 include_once './util/cabeca.php';
 include_once './util/conecaoBD.php';
 $coon = mysqli_connect("localhost", "root", "", "bd_pc");
-$query01 = "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac  from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id ";
+$query01 = "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac  from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id  ";
 $queryRack = mysqli_query($coon, $query01);
+
 
 
 ?>
@@ -18,21 +19,20 @@ $queryRack = mysqli_query($coon, $query01);
         <table class="table table-striped table-sm">
          <table class="table table-striped table-responsive" >
         <thead>
-            <tr><th>ID</th><th>Nome da Maquina</th><th>Nome do Usuario</th><th>Ponto</th><th>MAC</th><th>Rack</th><th>Setor</th><th>Editar</th><th>Excluir</th></tr>
+            <tr><th>Nome da Maquina</th><th>Nome do Usuario</th><th>Ponto</th><th>MAC</th><th>Rack</th><th>Setor</th><th>Editar</th><th>Excluir</th></tr>
     </thead>
         <tbody>
 <?php
  
         while($queryRacks  = mysqli_fetch_assoc($queryRack)){
             echo "<tr>";
-            echo "<td >" . $queryRacks['id'] . "</td>";
             echo "<td >" . $queryRacks['nome_maquina'] . "</td>";
             echo "<td >" . $queryRacks['nome_usuario'] . "</td>";
             echo "<td >" . $queryRacks['ponto'] . "</td>";
             echo "<td >" . $queryRacks['mac'] . "</td>";
             echo "<td >" . $queryRacks['rack'] . "</td>";
             echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
-            echo "<td >" .  "<button class='btn btn-warning'>Editar</button>". "</td>";
+            echo "<td >" .  "<button class='btn btn-warning'><a href='editarMaquina.php?id=".$queryRacks['id']."'>Editar</a></button>". "</td>";
             echo "<td >" . "<button class='btn btn-danger'>Apagar</button>" . "</td>";
             echo "</tr>";
            

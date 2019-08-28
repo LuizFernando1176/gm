@@ -1,5 +1,6 @@
-<?php include_once './config.php';
- 
+<?php 
+include_once './config.php';
+testaSessao ();
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +24,9 @@
             </button>
 
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                 
                 <ul class="navbar-nav ml-auto  ">
+                   <h3> Bem Vindo, <?php echo $_SESSION['login']?> </h3>
                     <li class="nav-item">
                         <a class="nav-link" href=""></a>
                     </li>
@@ -33,8 +36,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?php urlSite(); ?>cadastroMaquinas.php">Cad. de Maquinas</a>
-                            <a class="dropdown-item" href="<?php urlSite(); ?>usuarios/add.php">Usuarios</a>
-                        </div>
+                            </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,11 +44,11 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?php urlSite(); ?>exibirMaquinas.php">Exibi. de Maquinas</a>
-                            <a class="dropdown-item" href="<?php urlSite(); ?>usuarios/add.php">Usuarios</a>
-                        </div>
+                            </div>
                     </li>
 
                 </ul>
+             
                 <!--<span data-feather="log-out"></span>-->
                 <!--<button   class="btn btn-outline-secondary my-2 my-sm-0 ml-md-4" type="submit" > <a >Sair</a></button></a>-->
                 <a href="<?php urlSite(); ?>sair.php"  class="btn btn-outline-secondary my-2 my-sm-0 ml-md-4" ><span data-feather="log-out">Sair</span></a>

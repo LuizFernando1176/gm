@@ -7,6 +7,7 @@ $query01 = "SELECT `id`, `rack` FROM `rack`";
 $query02 = "SELECT `id`, `setor` FROM `setor`";
 $queryRack = mysqli_query($coon, $query01);
 $querySetor = mysqli_query($coon, $query02);
+
 ?>
 
 <div class="container">
