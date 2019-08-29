@@ -1,15 +1,15 @@
 .box-shadow{
-    
+
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.05),
-                0 4px 8px 0 rgba(0,0,0,.05);
-    
+        0 4px 8px 0 rgba(0,0,0,.05);
+
 }
 
 .descEstilo{
-    
+
     color: #686868;
     font-family: Georgia, Palatino, "Times New Roman", serif;
     font-weight: bold;
-     line-height: 150%
-    
+    line-height: 150%
+
 }

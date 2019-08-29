@@ -2,7 +2,6 @@
 include_once './config.php';
 include_once './util/cabeca.php';
 include_once './util/conecaoBD.php';
-
 ?>
 
 <div class="container">

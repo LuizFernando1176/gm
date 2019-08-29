@@ -21,11 +21,10 @@
             </button>
 
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                
 
-               
+
+
             </div>
         </nav> 
 
-       <script src="<?php urlSite(); ?>js/script.js" type="text/javascript"></script>
-        
+        <script src="<?php urlSite(); ?>js/script.js" type="text/javascript"></script>

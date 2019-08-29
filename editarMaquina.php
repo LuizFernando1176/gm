@@ -5,7 +5,7 @@ include_once './util/cabeca.php';
 include_once './util/rodape.php';
 $id = $_GET['id'];
 $coon = conectar();
-$busca = mysqli_query($coon,"select m.id , m.nome_maquina , m.nome_usuario , m.id_rack, m.id_setor, r.rack ,s.setor, m.ponto , m.mac from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id WHERE m.id =$id"); 
+$busca = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , m.id_rack, m.id_setor, r.rack ,s.setor, m.ponto , m.mac from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id WHERE m.id =$id");
 $row = mysqli_fetch_assoc($busca);
 $query01 = "SELECT `id`, `rack` FROM `rack`";
 $query02 = "SELECT `id`, `setor` FROM `setor`";
@@ -41,7 +41,7 @@ $querySetor = mysqli_query($coon, $query02);
         <script type="text/javascript">
             $(function () {
                 $("#mac").mask("AA:AA:AA:AA:A0:AA");
-                
+
 
             });
         </script>
@@ -54,7 +54,7 @@ $querySetor = mysqli_query($coon, $query02);
                 <label for="setor">Setor</label>
                 <select name="id_setor" id="id_setor" class="form-control">
                     <option selected value="<?php echo $row['id'] ?>"><?php echo $row['setor'] ?></option>
-                        <?php while ($setores = mysqli_fetch_array($querySetor)) { ?>
+                    <?php while ($setores = mysqli_fetch_array($querySetor)) { ?>
                         <option value="<?php echo $setores['id'] ?>"><?php echo utf8_encode($setores['setor']) ?></option>
                     <?php } ?>
                 </select>
@@ -62,8 +62,8 @@ $querySetor = mysqli_query($coon, $query02);
             <div class="form-group col-md-4">
                 <label for="rack">Rack</label>
                 <select id="id_rack"  name="id_rack" class="form-control">
-                   <option selected value="<?php echo $row['id']; ?>"><?php echo $row['rack'];?></option>
-                     <?php while ($racks= mysqli_fetch_array($queryRack)) { ?>
+                    <option selected value="<?php echo $row['id']; ?>"><?php echo $row['rack']; ?></option>
+                    <?php while ($racks = mysqli_fetch_array($queryRack)) { ?>
                         <option value="<?php echo $racks['id'] ?>"><?php echo utf8_encode($racks['rack']) ?></option>
                     <?php } ?>
                 </select>
@@ -71,7 +71,7 @@ $querySetor = mysqli_query($coon, $query02);
         </div>
         <center>
             <button type="submit" class="btn btn-warning"><a></a>Editar</button>
-            
+
         </center>
     </form>
 

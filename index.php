@@ -2,12 +2,11 @@
 include_once './config.php';
 include_once './util/cabeca.php';
 include_once './util/conecaoBD.php';
-$coon = mysqli_connect("localhost", "root", "", "bd_pc");
+$coon = conectar();
 $query01 = "SELECT `id`, `rack` FROM `rack`";
 $query02 = "SELECT `id`, `setor` FROM `setor`";
 $queryRack = mysqli_query($coon, $query01);
 $querySetor = mysqli_query($coon, $query02);
-
 ?>
 
 <div class="container">
@@ -35,7 +34,7 @@ $querySetor = mysqli_query($coon, $query02);
         <script type="text/javascript">
             $(function () {
                 $("#mac").mask("AA:AA:AA:AA:A0:AA");
-                
+
 
             });
         </script>
