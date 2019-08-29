@@ -29,7 +29,7 @@ $queryRack = mysqli_query($coon, $query01);
                                     echo "<td >" . $queryRacks['rack'] . "</td>";
                                     echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
                                     echo "<td >" . "<button class='btn btn-warning'><a href='editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                    echo "<td >" . "<button class='btn btn-danger'>Apagar</button>" . "</td>";
+                                    echo "<td >" . "<button class='btn btn-danger'><a href='deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
                                     echo "</tr>";
                                 }
                                 ?>
