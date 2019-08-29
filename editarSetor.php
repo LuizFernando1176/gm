@@ -15,7 +15,7 @@ $querySetor = mysqli_fetch_assoc($query);
 <div class="container">
 
 
-    <form style="margin: 4% ; padding: 1.5%;margin-top: 10%;" method="POST" action="salvarSetor.php">
+   
         <form style="margin: 4% ; padding: 1.5%;margin-top: 25%;" method="post" action="inserts/insert_setor.php">
         <center><h3 class="descEstilo">Editar Setor</h3></center><br><br>
         <center> <div class="form-row">
