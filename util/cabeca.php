@@ -47,8 +47,8 @@ testaSessao();
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?php urlSite(); ?>exibirMaquinas.php">Exibi.  Maquinas</a>
-                            <a class="dropdown-item" href="<?php urlSite(); ?>exibirMaquinas.php">Exibi.  Setores</a>
-                            <a class="dropdown-item" href="<?php urlSite(); ?>exibirMaquinas.php">Exibi. Usuario</a>
+                            <a class="dropdown-item" href="<?php urlSite(); ?>exibirSetores.php">Exibi.  Setores</a>
+                            <a class="dropdown-item" href="<?php urlSite(); ?>exibirUsuarios.php">Exibi. Usuario</a>
                         </div>
                     </li>
 
