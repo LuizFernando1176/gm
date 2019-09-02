@@ -1,5 +1,4 @@
 <?php
-include_once '../config.php';
 include_once '../util/cabeca.php';
 include_once '../util/conecaoBD.php';
 $coon = conectar();
@@ -28,9 +27,9 @@ $querySetor = mysqli_query($coon, $query02);
             <label for="ponto">Ponto</label>
             <input type="text" class="form-control" id="ponto" name="ponto" placeholder="PPxPTx">
         </div>
-        <script src="<?php urlSite(); ?>js/jquery.mask.js" type="text/javascript"></script>
-        <script src="<?php urlSite(); ?>js/jquery.maskedinput.js" type="text/javascript"></script>
-        <script src="<?php urlSite(); ?>js/jquery.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mask.js" type="text/javascript"></script>
+        <script src="../js/jquery.maskedinput.js" type="text/javascript"></script>
+        <script src="../js/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(function () {
                 $("#mac").mask("AA:AA:AA:AA:A0:AA");

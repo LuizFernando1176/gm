@@ -1,6 +1,5 @@
 <?php
 include_once '../util/conecaoBD.php';
-include_once '../config.php';
 include_once '../util/cabeca.php';
 
 $coon = conectar();
@@ -29,8 +28,8 @@ $queryRack = mysqli_query($coon, $query01);
                                     echo "<td >" . $queryRacks['mac'] . "</td>";
                                     echo "<td >" . $queryRacks['rack'] . "</td>";
                                     echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
-                                    echo "<td >" . "<button class='btn btn-warning'><a href='editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                    echo "<td >" . "<button class='btn btn-danger'><a href='deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+                                    echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
+                                    echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
                                     echo "</tr>";
                                 }
                                 ?>

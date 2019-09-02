@@ -1,6 +1,6 @@
 <?php
 include_once '../util/conecaoBD.php';
-include_once '../config.php';
+
 $id = $_GET['id'];
 
 $queryDeletaSetor = "DELETE FROM `setor` WHERE id ='$id'";
@@ -15,7 +15,7 @@ if ($resultado) {
     echo $id;
 } else {
 
-    echo 'Erro a cadastra usuario ';
+    echo 'Erro a cadastra Maquina ';
 }
 
      

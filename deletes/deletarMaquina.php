@@ -1,7 +1,7 @@
 <?php
 
 include_once '../util/conecaoBD.php';
-include_once '../config.php';
+
 $id = $_GET['id'];
 
 $queryDeletaMaquina = "DELETE FROM `maquina` WHERE id ='$id'";

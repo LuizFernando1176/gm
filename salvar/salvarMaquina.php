@@ -1,7 +1,6 @@
 <?php
+include_once '../util/conecaoBD.php';
 
-include_once './util/conecaoBD.php';
-include_once 'config.php';
 $id = $_POST['id'];
 $id_setor = $_POST ['id_setor'];
 $id_rack = $_POST ['id_rack'];
@@ -18,10 +17,10 @@ $resultado = mysqli_query($coon, $queryMaquinas);
 
 if ($resultado) {
 
-    echo '<script Language="javascript"> alert("Maquina editada  com sucesso!!"); location.href="exibirMaquinas.php"; </script>';
+    echo '<script Language="javascript"> alert("Maquina editada  com sucesso!!"); location.href="../exibir/exibirMaquinas.php"; </script>';
 } else {
 
-    echo 'Erro a cadastra usuario ';
+    echo 'Erro a editar usuario ';
 }
 
       

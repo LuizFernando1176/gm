@@ -1,6 +1,5 @@
 <?php
-include_once './config.php';
-include_once './util/cabeca.php';
+include_once './util/cabecaIndex.php';
 include_once './util/conecaoBD.php';
 $coon = conectar();
 $query01 = "SELECT `id`, `rack` FROM `rack`";
@@ -69,11 +68,12 @@ $querySetor = mysqli_query($coon, $query02);
         </center>
     </form>
 
-
+<script src="js/feather.js" type="text/javascript"></script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
+<script src="js/jquery.mask.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
 
 
 </div>
 
-<?php
-include_once './util/rodape.php';
-?>

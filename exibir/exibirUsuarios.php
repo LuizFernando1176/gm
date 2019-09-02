@@ -1,6 +1,5 @@
 <?php
 include_once '../util/conecaoBD.php';
-include_once '../config.php';
 include_once '../util/cabeca.php';
 
 $coon = conectar();
@@ -24,8 +23,8 @@ $queryRack = mysqli_query($coon, $query01);
                             echo "<td >" . $queryRacks['login'] . "</td>";
                             echo "<td >" . $queryRacks['senha'] . "</td>";
                             echo "<td >" . $queryRacks['nivel'] . "</td>";
-                            echo "<td >" . "<button class='btn btn-warning'><a href='editarUsuario.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                            echo "<td >" . "<button class='btn btn-danger'><a href='deletarUsuarios.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+                            echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarUsuario.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
+                            echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarUsuarios.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
                             echo "</tr>";
                         }
                         ?>

@@ -13,10 +13,10 @@ $select = mysqli_query($con, $queryLogin);
 if (mysqli_num_rows($select) > 0) {
     $_SESSION['login'] = $login;
     $_SESSION['senha'] = $senha;
-    header('Location:' . urlSite() . 'index.php');
+    header('Location:../index.php');
 } else {
     unset($_SESSION['login']);
     unset($_SESSION['senha']);
-    header('Location:' . urlSite() . 'login.php');
+    header('Location: ../login.php');
 }
 ?>

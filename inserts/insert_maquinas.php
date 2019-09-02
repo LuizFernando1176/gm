@@ -16,10 +16,11 @@ $resultado = mysqli_query($coon, $queryMaquinas);
 
 if ($resultado) {
 
-    echo '<script Language="javascript"> alert("Usuario Cadastrado Com sucesso!!"); location.href="../index.php"; </script>';
+    echo '<script Language="javascript"> alert("Maquina Cadastrado Com sucesso!!"); location.href="../exibir/exibirMaquinas.php"; </script>';
 } else {
 
     echo 'Erro a cadastra usuario ';
 }
 
-      
+?>
+
