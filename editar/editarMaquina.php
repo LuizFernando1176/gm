@@ -1,8 +1,8 @@
 <?php
-include_once './util/conecaoBD.php';
-include_once 'config.php';
-include_once './util/cabeca.php';
-include_once './util/rodape.php';
+include_once '../util/conecaoBD.php';
+include_once '../config.php';
+include_once '../util/cabeca.php';
+
 $id = $_GET['id'];
 $coon = conectar();
 $busca = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , m.id_rack, m.id_setor, r.rack ,s.setor, m.ponto , m.mac from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id WHERE m.id =$id");
@@ -18,7 +18,7 @@ $querySetor = mysqli_query($coon, $query02);
 <div class="container">
 
 
-    <form style="margin: 4% ; padding: 1.5%;margin-top: 10%;" method="POST" action="salvarMaquina.php">
+    <form style="margin: 4% ; padding: 1.5%;margin-top: 10%;" method="POST" action="../salvarMaquina.php">
         <center><h3 class="descEstilo">Editar Máquina</h3></center><br><br>
         <div class="form-row">
             <input type="hidden" value="<?php echo $id; ?>" name="id" />
@@ -81,5 +81,5 @@ $querySetor = mysqli_query($coon, $query02);
 </div>
 
 <?php
-include_once './util/rodape.php';
+include_once '../util/rodape.php';
 ?>

@@ -10,7 +10,7 @@ $resultado = $queryCadastroUser;
 
 if ($resultado) {
 
-    echo '<script Language="javascript"> alert("Usuario Cadastrado Com sucesso!!"); location.href="../exibirUsuario.php"; </script>';
+    echo '<script Language="javascript"> alert("Usuario Cadastrado Com sucesso!!"); location.href="../exibir/exibirUsuario.php"; </script>';
 } else {
 
     echo 'Erro a cadastra usuario ';

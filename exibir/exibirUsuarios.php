@@ -1,7 +1,8 @@
 <?php
-include_once './config.php';
-include_once './util/cabeca.php';
-include_once './util/conecaoBD.php';
+include_once '../util/conecaoBD.php';
+include_once '../config.php';
+include_once '../util/cabeca.php';
+
 $coon = conectar();
 $query01 = "SELECT `id`,`login`, `senha`, `nivel` FROM `usuario` WHERE 1";
 $queryRack = mysqli_query($coon, $query01);
@@ -37,5 +38,5 @@ $queryRack = mysqli_query($coon, $query01);
 </div>
 
 <?php
-include_once './util/rodape.php';
+include_once '../util/rodape.php';
 ?>

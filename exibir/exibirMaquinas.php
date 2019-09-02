@@ -1,7 +1,8 @@
 <?php
-include_once './config.php';
-include_once './util/cabeca.php';
-include_once './util/conecaoBD.php';
+include_once '../util/conecaoBD.php';
+include_once '../config.php';
+include_once '../util/cabeca.php';
+
 $coon = conectar();
 $query01 = "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac  from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id  ";
 $queryRack = mysqli_query($coon, $query01);
@@ -46,5 +47,5 @@ $queryRack = mysqli_query($coon, $query01);
     </div>
 
     <?php
-    include_once './util/rodape.php';
+    include_once '../util/rodape.php';
     ?>

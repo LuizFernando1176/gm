@@ -1,8 +1,8 @@
 <?php
-include_once './util/conecaoBD.php';
-include_once 'config.php';
-include_once './util/cabeca.php';
-include_once './util/rodape.php';
+include_once '../util/conecaoBD.php';
+include_once '../config.php';
+include_once '../util/cabeca.php';
+
 $id = $_GET['id'];
 $coon = conectar();
 $query02 = "SELECT `setor` FROM `setor` where id=$id";
@@ -37,5 +37,5 @@ $querySetor = mysqli_fetch_assoc($query);
 </div>
 
 <?php
-include_once './util/rodape.php';
+include_once '../util/rodape.php';
 ?>

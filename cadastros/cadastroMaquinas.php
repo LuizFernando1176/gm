@@ -1,7 +1,7 @@
 <?php
-include_once './config.php';
-include_once './util/cabeca.php';
-include_once './util/conecaoBD.php';
+include_once '../config.php';
+include_once '../util/cabeca.php';
+include_once '../util/conecaoBD.php';
 $coon = conectar();
 $query01 = "SELECT `id`, `rack` FROM `rack`";
 $query02 = "SELECT `id`, `setor` FROM `setor`";
@@ -12,7 +12,7 @@ $querySetor = mysqli_query($coon, $query02);
 <div class="container">
 
 
-    <form style="margin: 4% ; padding: 1.5%;margin-top: 10%;" method="post" action="inserts/insert_maquinas.php">
+    <form style="margin: 4% ; padding: 1.5%;margin-top: 10%;" method="post" action="../inserts/insert_maquinas.php">
         <center><h3 class="descEstilo">Cadastro de Máquina</h3></center><br><br>
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -75,5 +75,5 @@ $querySetor = mysqli_query($coon, $query02);
 </div>
 
 <?php
-include_once './util/rodape.php';
+include_once '../util/rodape.php';
 ?>

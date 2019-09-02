@@ -14,7 +14,7 @@ $resultado = mysqli_query($coon, $queryUsuario);
 
 if ($resultado) {
 
-    echo '<script Language="javascript"> alert("Usuario Cadastrado Com sucesso!!"); location.href="../index.php"; </script>';
+    echo '<script Language="javascript"> alert("Usuario Cadastrado Com sucesso!!"); location.href="../exibir/exibirUsuarios.php"; </script>';
 } else {
 
     echo 'Erro a cadastra usuario ';
