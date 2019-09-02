@@ -4,10 +4,14 @@ include_once '../util/cabeca.php';
 
 $id = $_GET['id'];
 $coon = conectar();
-$busca = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , m.id_rack, m.id_setor, r.rack ,s.setor, m.ponto , m.mac from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id WHERE m.id =$id");
+$busca = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id  WHERE m.id =$id");
 $row = mysqli_fetch_assoc($busca);
 $query01 = "SELECT `id`, `rack` FROM `rack`";
 $query02 = "SELECT `id`, `setor` FROM `setor`";
+$query03 = "SELECT `id`, `sw` FROM `switch`";
+$query04 = "SELECT `id`, `barramento` FROM `barramento`";
+$querySw = mysqli_query($coon, $query03);
+$queryBarramento = mysqli_query($coon, $query04);
 $queryRack = mysqli_query($coon, $query01);
 $querySetor = mysqli_query($coon, $query02);
 ?>
@@ -17,7 +21,7 @@ $querySetor = mysqli_query($coon, $query02);
 <div class="container">
 
 
-    <form style="margin: 4% ; padding: 1.5%;margin-top: 10%;" method="POST" action="../salvarMaquina.php">
+    <form style="margin: 4% ; padding: 1.5%;margin-top: 10%;" method="POST" action="../salvar/salvarMaquina.php">
         <center><h3 class="descEstilo">Editar Máquina</h3></center><br><br>
         <div class="form-row">
             <input type="hidden" value="<?php echo $id; ?>" name="id" />
@@ -64,6 +68,24 @@ $querySetor = mysqli_query($coon, $query02);
                     <option selected value="<?php echo $row['id']; ?>"><?php echo $row['rack']; ?></option>
                     <?php while ($racks = mysqli_fetch_array($queryRack)) { ?>
                         <option value="<?php echo $racks['id'] ?>"><?php echo utf8_encode($racks['rack']) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+             <div class="form-group col-md-4">
+                <label for="id_sw">Switch</label>
+                <select id="id_sw"  name="id_sw" class="form-control">
+                     <option selected value="<?php echo $row['id']; ?>"><?php echo $row['sw']; ?></option>
+                    <?php while ($racks = mysqli_fetch_array($queryRack)) { ?>
+                        <option value="<?php echo $racks['id'] ?>"><?php echo utf8_encode($racks['sw']) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="barramento">Barramento</label>
+                <select id="id_barramento"  name="id_barramento" class="form-control">
+                      <option selected value="<?php echo $row['id']; ?>"><?php echo $row['barramento']; ?></option>
+                    <?php while ($racks = mysqli_fetch_array($queryRack)) { ?>
+                        <option value="<?php echo $racks['id'] ?>"><?php echo utf8_encode($racks['barramento']) ?></option>
                     <?php } ?>
                 </select>
             </div>

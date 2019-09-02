@@ -4,8 +4,12 @@ include_once '../util/conecaoBD.php';
 $coon = conectar();
 $query01 = "SELECT `id`, `rack` FROM `rack`";
 $query02 = "SELECT `id`, `setor` FROM `setor`";
+$query03 = "SELECT `id`, `sw` FROM `switch`";
+$query04 = "SELECT `id`, `barramento` FROM `barramento`";
 $queryRack = mysqli_query($coon, $query01);
 $querySetor = mysqli_query($coon, $query02);
+$querySw = mysqli_query($coon, $query03);
+$queryBarramento = mysqli_query($coon, $query04);
 ?>
 
 <div class="container">
@@ -58,6 +62,24 @@ $querySetor = mysqli_query($coon, $query02);
                     <option selected>Escolha o Rack</option>
                     <?php while ($racks = mysqli_fetch_array($queryRack)) { ?>
                         <option value="<?php echo $racks['id'] ?>"><?php echo $racks['rack'] ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="id_sw">Switch</label>
+                <select id="id_sw"  name="id_sw" class="form-control">
+                    <option selected>Escolha o Switch</option>
+                    <?php while ($SW= mysqli_fetch_array($querySw)) { ?>
+                        <option value="<?php echo $SW['id'] ?>"><?php echo $SW['sw'] ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="barramento">Barramento</label>
+                <select id="id_barramento"  name="id_barramento" class="form-control">
+                    <option selected>Escolha o Barramento</option>
+                    <?php while ($barramento = mysqli_fetch_array($queryBarramento)) { ?>
+                        <option value="<?php echo $barramento['id'] ?>"><?php echo $barramento['barramento'] ?></option>
                     <?php } ?>
                 </select>
             </div>
