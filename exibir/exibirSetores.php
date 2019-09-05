@@ -8,9 +8,9 @@ $queryRack = mysqli_query($coon, $query01);
 ?>
 <div class="container ">
     <div class="row">
-    <div class=" col-lg-4">
-    
-       
+        <div class=" col-lg-4">
+
+
             <table class="table table-striped table-responsive" style="margin-top: 25%;float: left">
                 <thead>
                     <tr><th>Nome do Setor</th><th>Editar</th><th>Excluir</th></tr>
@@ -28,10 +28,10 @@ $queryRack = mysqli_query($coon, $query01);
 
                 </tbody>
             </table>
-       
-    
+
+
         </div>
-        </div>
+    </div>
 </div>
 
 <?php

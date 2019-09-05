@@ -69,7 +69,7 @@ $queryBarramento = mysqli_query($coon, $query04);
                 <label for="id_sw">Switch</label>
                 <select id="id_sw"  name="id_sw" class="form-control">
                     <option selected>Escolha o Switch</option>
-                    <?php while ($SW= mysqli_fetch_array($querySw)) { ?>
+                    <?php while ($SW = mysqli_fetch_array($querySw)) { ?>
                         <option value="<?php echo $SW['id'] ?>"><?php echo $SW['sw'] ?></option>
                     <?php } ?>
                 </select>

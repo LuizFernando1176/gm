@@ -24,6 +24,5 @@ if ($resultado) {
 
     echo 'Erro a cadastra maquina ';
 }
-
 ?>
 

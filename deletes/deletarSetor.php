@@ -1,4 +1,5 @@
 <?php
+
 include_once '../util/conecaoBD.php';
 
 $id = $_GET['id'];

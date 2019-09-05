@@ -1,6 +1,5 @@
 <?php
 
-
 function urlSite() {
     if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
         $protocol = 'https://';

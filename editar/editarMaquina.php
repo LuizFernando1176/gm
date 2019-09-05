@@ -71,10 +71,10 @@ $querySetor = mysqli_query($coon, $query02);
                     <?php } ?>
                 </select>
             </div>
-             <div class="form-group col-md-4">
+            <div class="form-group col-md-4">
                 <label for="id_sw">Switch</label>
                 <select id="id_sw"  name="id_sw" class="form-control">
-                     <option selected value="<?php echo $row['id']; ?>"><?php echo $row['sw']; ?></option>
+                    <option selected value="<?php echo $row['id']; ?>"><?php echo $row['sw']; ?></option>
                     <?php while ($racks = mysqli_fetch_array($queryRack)) { ?>
                         <option value="<?php echo $racks['id'] ?>"><?php echo utf8_encode($racks['sw']) ?></option>
                     <?php } ?>
@@ -83,7 +83,7 @@ $querySetor = mysqli_query($coon, $query02);
             <div class="form-group col-md-4">
                 <label for="barramento">Barramento</label>
                 <select id="id_barramento"  name="id_barramento" class="form-control">
-                      <option selected value="<?php echo $row['id']; ?>"><?php echo $row['barramento']; ?></option>
+                    <option selected value="<?php echo $row['id']; ?>"><?php echo $row['barramento']; ?></option>
                     <?php while ($racks = mysqli_fetch_array($queryRack)) { ?>
                         <option value="<?php echo $racks['id'] ?>"><?php echo utf8_encode($racks['barramento']) ?></option>
                     <?php } ?>

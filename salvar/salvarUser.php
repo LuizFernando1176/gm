@@ -2,8 +2,8 @@
 
 include_once '../util/conecaoBD.php';
 $id = $_POST['id'];
-$login =$_POST['login'];
-$senha=$_POST ['senha'];
+$login = $_POST['login'];
+$senha = $_POST ['senha'];
 $nivel = $_POST ['nivel'];
 $coon = conectar();
 $query01 = "update `usuario`set login=('$login'),senha=('$senha'),nivel=('$nivel') where id=$id";

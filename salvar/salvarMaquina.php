@@ -1,4 +1,5 @@
 <?php
+
 include_once '../util/conecaoBD.php';
 
 $id = $_POST['id'];
@@ -13,7 +14,7 @@ $queryMaquinas = "UPDATE `maquina` SET `id_setor`='$id_setor',`id_rack`='$id_rac
 $coon = conectar();
 $resultado = mysqli_query($coon, $queryMaquinas);
 
-echo $queryMaquinas ;
+echo $queryMaquinas;
 
 if ($resultado) {
 

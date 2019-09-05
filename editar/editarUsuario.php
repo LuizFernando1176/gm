@@ -14,7 +14,7 @@ $querySetor = mysqli_fetch_assoc($query);
 <div class="container">
 
 
-    
+
     <form style="margin: 4% ; padding: 1.5%;margin-top: 15%;" method="post" action="../salvar/salvarUser.php">
         <center><h3 class="descEstilo">Editar Usuario</h3></center><br><br>
         <center> <div class="form-row">
