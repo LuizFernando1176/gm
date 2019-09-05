@@ -16,7 +16,7 @@ testaSessao();
         <link rel="stylesheet" href="./css/estilo.css">
 
     </head>
-    <body> 
+    <body class="container"> 
         <nav class="navbar navbar-expand-md navbar-light bg-light box-shadow fixed-top py-3 ">
             <a class="navbar-brand" href="index.php"><img width="45%" height="45% "src="./img/logo.svg"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
