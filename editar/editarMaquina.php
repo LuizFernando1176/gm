@@ -4,7 +4,7 @@ include_once '../util/cabeca.php';
 
 $id = $_GET['id'];
 $coon = conectar();
-$busca = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id  WHERE m.id =$id");
+$busca = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id   WHERE m.id =$id");
 $row = mysqli_fetch_assoc($busca);
 $query01 = "SELECT `id`, `rack` FROM `rack`";
 $query02 = "SELECT `id`, `setor` FROM `setor`";
@@ -53,6 +53,43 @@ $querySetor = mysqli_query($coon, $query02);
             <input type="text" class="form-control" id="mac" value="<?php echo $row['mac']; ?>" name="mac" placeholder="MAC Apenas numeros">
         </div>
         <div class="form-row">
+             <div class="form-group col-md-4">
+                <div>
+                    <label>Locada</label> <input id="label1" type="radio" name="inv" data-tab="tab1" />
+                    <label>Propria</label> <input id="label2" type="radio" name="tombo" data-tab="tab2" />
+
+                </div>
+
+                <div id="tab1" data-content="" style="display: none;">
+                    <input type="text" name="inv" placeholder="Digite o INV" class="form-control">
+                </div>
+                <div id="tab2" data-content="" style="display: none;">
+                    <input type="text" name="tombo" placeholder="Digite o Tombo" class="form-control">
+                </div>
+
+
+                <script type="text/javascript">
+                    //consultando os radio responsaveis por exibir os conteudos.
+                    var tabs = document.querySelectorAll("[data-tab]");
+
+                    //consultando os conteudos a serem exibidos.
+                    var contents = document.querySelectorAll("[data-content]");
+
+                    //declarando a função que será associada a cada input:radio
+                    var tabOnClick = function (elem) {
+                        for (var indice in contents) {
+                            //verificando se o input:radio selecionado está associado ao conteudo atual.
+                            var display = contents[indice].id == elem.target.dataset.tab ? "block" : "none";
+                            contents[indice].style.display = display;
+                        }
+                    }
+
+                    //associando todos os input:radio ao método declarado acima.
+                    for (var indice in tabs) {
+                        tabs[indice].onclick = tabOnClick;
+                    }
+                </script>
+            </div>
             <div class="form-group col-md-4">
                 <label for="setor">Setor</label>
                 <select name="id_setor" id="id_setor" class="form-control">
@@ -65,7 +102,7 @@ $querySetor = mysqli_query($coon, $query02);
             <div class="form-group col-md-4">
                 <label for="rack">Rack</label>
                 <select id="id_rack"  name="id_rack" class="form-control">
-                    <option selected value="<?php echo $row['id']; ?>"><?php echo $row['rack']; ?></option>
+                    <option selected value="<?php echo $row['r.id']; ?>"><?php echo $row['rack']; ?></option>
                     <?php while ($racks = mysqli_fetch_array($queryRack)) { ?>
                         <option value="<?php echo $racks['id'] ?>"><?php echo utf8_encode($racks['rack']) ?></option>
                     <?php } ?>
@@ -74,8 +111,8 @@ $querySetor = mysqli_query($coon, $query02);
             <div class="form-group col-md-4">
                 <label for="id_sw">Switch</label>
                 <select id="id_sw"  name="id_sw" class="form-control">
-                    <option selected value="<?php echo $row['id']; ?>"><?php echo $row['sw']; ?></option>
-                    <?php while ($racks = mysqli_fetch_array($queryRack)) { ?>
+                    <option selected value="<?php echo $row['s.id']; ?>"><?php echo $row['sw']; ?></option>
+                    <?php while ($racks = mysqli_fetch_array($querySw)) { ?>
                         <option value="<?php echo $racks['id'] ?>"><?php echo utf8_encode($racks['sw']) ?></option>
                     <?php } ?>
                 </select>
@@ -83,8 +120,8 @@ $querySetor = mysqli_query($coon, $query02);
             <div class="form-group col-md-4">
                 <label for="barramento">Barramento</label>
                 <select id="id_barramento"  name="id_barramento" class="form-control">
-                    <option selected value="<?php echo $row['id']; ?>"><?php echo $row['barramento']; ?></option>
-                    <?php while ($racks = mysqli_fetch_array($queryRack)) { ?>
+                    <option selected value="<?php echo $row['b.id']; ?>"><?php echo $row['barramento']; ?></option>
+                    <?php while ($racks = mysqli_fetch_array($queryBarramento)) { ?>
                         <option value="<?php echo $racks['id'] ?>"><?php echo utf8_encode($racks['barramento']) ?></option>
                     <?php } ?>
                 </select>

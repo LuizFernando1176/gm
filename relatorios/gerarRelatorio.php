@@ -1,10 +1,8 @@
 <?php
 include_once '../util/cabeca.php';
 ?>
-
-
 <div class="container" >
-    <div class="container-fluid"style="margin-top: 18%;">
+    <div class="container-fluid"style="margin-top: 15%;">
         <center><h1>Gerar Relatorio</h1></center>
         <div class="card">
             <form method="post" action="../buscas/buscas.php" style="padding: 2%;margin: 2%">

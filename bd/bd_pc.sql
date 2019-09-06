@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Ago-2019 às 20:25
+-- Tempo de geração: 06-Set-2019 às 19:09
 -- Versão do servidor: 10.3.16-MariaDB
 -- versão do PHP: 7.3.8
 
@@ -25,6 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `barramento`
+--
+
+CREATE TABLE `barramento` (
+  `id` int(11) NOT NULL,
+  `barramento` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `barramento`
+--
+
+INSERT INTO `barramento` (`id`, `barramento`) VALUES
+(1, '10/100'),
+(2, '10/100/1000');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `maquina`
 --
 
@@ -35,22 +54,24 @@ CREATE TABLE `maquina` (
   `nome_maquina` varchar(150) NOT NULL,
   `nome_usuario` varchar(150) NOT NULL,
   `ponto` varchar(150) NOT NULL,
-  `mac` varchar(150) NOT NULL
+  `mac` varchar(150) NOT NULL,
+  `id_sw` int(11) NOT NULL,
+  `id_barramento` int(11) NOT NULL,
+  `inv` varchar(25) DEFAULT NULL,
+  `tombo` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `maquina`
 --
 
-INSERT INTO `maquina` (`id`, `id_setor`, `id_rack`, `nome_maquina`, `nome_usuario`, `ponto`, `mac`) VALUES
-(2, 3, 1, 'CAVAL0100-PC', 'jose.walkirdes ', 'PP05PT15', 'D8:97:BA:E5:54:32'),
-(48, 3, 1, 'CAVAL-PC-NOVO', 'salmo.domingos ', 'PP01PT09', 'C0:7C:D1:33:83:D8'),
-(49, 3, 2, 'CAVAL02-PC', 'francisco.assis ', 'PP05PT09', '70:71:BC:58:13:9A'),
-(50, 26, 4, 'DEf-01', 'thiago.silva', 'PP01PT02', '55:aa:22:55:25:55'),
-(51, 7, 2, 'Veia01', 'veia.veia', 'PP01PT02', '50:AF:22:22:A0:00'),
-(52, 7, 2, 'Demo001', 'democrito.rodrigo', 'PP01PT03', '00:AF:SS:33:00:GG'),
-(53, 12, 4, 'Demo002', 'Amiguinho', 'PP01PT06', 'll:ll:l0:0s:00:s0'),
-(54, 5, 5, 'Veia03', 'Veia', 'PP01PT5', '12:12:12:PP:12:12');
+INSERT INTO `maquina` (`id`, `id_setor`, `id_rack`, `nome_maquina`, `nome_usuario`, `ponto`, `mac`, `id_sw`, `id_barramento`, `inv`, `tombo`) VALUES
+(16, 12, 7, 'DEf-01f', 'jose.walkirdesd', 'PP01PT023', '00:AF:SS:33:00:GG', 1, 1, '', 'sem tombo'),
+(18, 18, 5, 'DEf-01', 'jose.walkirdes ', 'PP01PT02', '00:AF:SS:33:00:GG', 1, 1, '', ''),
+(19, 16, 9, 'DEf-01', 'jose.walkirdes ', 'PP01PT02', '00:AF:SS:33:00:GG', 1, 1, '12331312', ''),
+(20, 19, 9, 'DEf-01', 'jose.walkirdes ', 'PP01PT02', '00:AF:SS:33:00:GG', 1, 1, '12331312', ''),
+(21, 18, 8, 'Veia01', 'thiago.silva', 'PP01PT02', '00:AF:SS:33:00:GG', 2, 1, '', '2334323'),
+(22, 11, 2, 'DEf-01', 'fia2ss', 'PP01PT03', '55:aa:22:55:25:55', 2, 1, '', 'sem tombo');
 
 -- --------------------------------------------------------
 
@@ -134,6 +155,26 @@ INSERT INTO `setor` (`id`, `setor`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `switch`
+--
+
+CREATE TABLE `switch` (
+  `id` int(11) NOT NULL,
+  `sw` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `switch`
+--
+
+INSERT INTO `switch` (`id`, `sw`) VALUES
+(1, 'SW001'),
+(2, 'SW002'),
+(3, 'SW003');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuario`
 --
 
@@ -149,11 +190,18 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `login`, `senha`, `nivel`) VALUES
-(1, 'luiz.ferreira', 'nando1176', 1);
+(1, 'luiz.ferreira', 'nando1176', 1),
+(3, 'amiguinho', '123456', 1);
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `barramento`
+--
+ALTER TABLE `barramento`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `maquina`
@@ -161,7 +209,9 @@ INSERT INTO `usuario` (`id`, `login`, `senha`, `nivel`) VALUES
 ALTER TABLE `maquina`
   ADD PRIMARY KEY (`id`),
   ADD KEY `maquina_ibfk_1` (`id_setor`),
-  ADD KEY `maquina_ibfk_2` (`id_rack`);
+  ADD KEY `maquina_ibfk_3` (`id_sw`) USING BTREE,
+  ADD KEY `maquina_ibfk_4` (`id_barramento`) USING BTREE,
+  ADD KEY `maquina_ibfk_2` (`id_rack`) USING BTREE;
 
 --
 -- Índices para tabela `rack`
@@ -176,6 +226,12 @@ ALTER TABLE `setor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `switch`
+--
+ALTER TABLE `switch`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
@@ -186,10 +242,16 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de tabela `barramento`
+--
+ALTER TABLE `barramento`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `maquina`
 --
 ALTER TABLE `maquina`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `rack`
@@ -201,13 +263,19 @@ ALTER TABLE `rack`
 -- AUTO_INCREMENT de tabela `setor`
 --
 ALTER TABLE `setor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT de tabela `switch`
+--
+ALTER TABLE `switch`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para despejos de tabelas
@@ -217,8 +285,10 @@ ALTER TABLE `usuario`
 -- Limitadores para a tabela `maquina`
 --
 ALTER TABLE `maquina`
-  ADD CONSTRAINT `maquina_ibfk_1` FOREIGN KEY (`id_setor`) REFERENCES `setor` (`id`),
-  ADD CONSTRAINT `maquina_ibfk_2` FOREIGN KEY (`id_rack`) REFERENCES `rack` (`id`);
+  ADD CONSTRAINT `maquina_ibfk_2` FOREIGN KEY (`id_rack`) REFERENCES `rack` (`id`),
+  ADD CONSTRAINT `maquina_ibfk_3` FOREIGN KEY (`id_setor`) REFERENCES `setor` (`id`),
+  ADD CONSTRAINT `maquina_ibfk_4` FOREIGN KEY (`id_sw`) REFERENCES `switch` (`id`),
+  ADD CONSTRAINT `maquina_ibfk_5` FOREIGN KEY (`id_barramento`) REFERENCES `barramento` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

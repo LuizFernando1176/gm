@@ -24,7 +24,7 @@ include_once '../util/conecaoBD.php';
                     <label for="nivel">Nivel</label>
                     <select name="nivel" id="nivel" class="form-control" required="">
                         <option>Escolha o Nivel</option>
-                        <option value="1">Administrador</option>
+                        <option value="1">Cadastrante</option>
                         <option value="2">Atendente</option>
                     </select>
                 </div>

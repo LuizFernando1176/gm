@@ -9,8 +9,10 @@ $ponto = $_POST ['ponto'];
 $mac = $_POST ['mac'];
 $id_sw = $_POST ['id_sw'];
 $id_barramento = $_POST ['id_barramento'];
+$inv = $_POST ['inv'];
+$tombo = $_POST ['tombo'];
 
-$queryMaquinas = "INSERT INTO `maquina`(`id_setor`, `id_rack`, `nome_maquina`, `nome_usuario`, `ponto`, `mac`,`id_sw`,`id_barramento`) VALUES ('$id_setor','$id_rack','$nome_maquina','$nome_usuario','$ponto','$mac','$id_sw','$id_barramento')";
+$queryMaquinas = "INSERT INTO `maquina`( `id_setor`, `id_rack`, `nome_maquina`, `nome_usuario`, `ponto`, `mac`, `id_sw`, `id_barramento`, `inv`, `tombo`) VALUES ('$id_setor','$id_rack','$nome_maquina','$nome_usuario','$ponto','$mac','$id_sw','$id_barramento','$inv','$tombo')";
 $coon = conectar();
 $resultado = mysqli_query($coon, $queryMaquinas);
 
